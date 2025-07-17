@@ -15,7 +15,8 @@ export default {
       type: Array,
       required: true
     }
-  }
+  },
+  emits: ['deleteprofile', 'updateprofile']
 };
 </script>
 
@@ -45,9 +46,7 @@ export default {
       <td>{{ profile.gender }}</td>
       <td>{{ profile.date }}</td>
       <td>
-        <router-link :to="`/update/${idx}`">
-          <button class="edit" @click="$emit('updateprofile' , profile)">Update</button>
-        </router-link>
+        <button class="edit" @click="$emit('updateprofile', profile)">Update</button>
         <button class="delete" @click="$emit('deleteprofile', profile)">delete</button>
       </td>
     </tr>

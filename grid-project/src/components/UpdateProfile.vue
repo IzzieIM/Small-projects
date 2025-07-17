@@ -4,6 +4,10 @@ export default {
         profile: {
             type: Object,
             required: true
+        },
+        profileIdx: {
+            type: Number,
+            required: true
         }
     },
     data() {
@@ -15,21 +19,36 @@ export default {
             newPhoto: null,
             photoPreview: this.profile.photoUrl || null,
             phoneError: '',
+            date: this.profile.date || '',
             agreed: true // optional, for validation
         };
     },
     methods: {
         handleFileChange(event) {
             const file = event.target.files[0];
-            if (file) {
+            // Only proceed if a file is selected and it's different from the current preview
+            if (file && (!this.photoPreview || this.photoPreview !== URL.createObjectURL(file))) {
                 this.newPhoto = file;
-                if (this.photoPreview) {
-                    URL.revokeObjectURL(this.photoPreview);
-                }
                 this.photoPreview = URL.createObjectURL(file);
+                // Update the date to the file's last modified time
+                if (file.lastModified) {
+                    const d = new Date(file.lastModified);
+                    this.date = d.toLocaleString('en-IN', {
+                        timeZone: 'Asia/Kolkata',
+                        year: 'numeric',
+                        month: 'long',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: true
+                    });
+                }
+
             }
         },
-        handleupdate() {
+
+        handleSubmit() {
             // Validations
             if (!this.agreed) {
                 alert('Please check the box to proceed.');
@@ -48,21 +67,28 @@ export default {
                 this.phoneError = '';
             }
 
-            // Update profile object
-            const updatedProfile = {
-                ...this.profile,
+            // Prepare updated profile
+            const updatedprofile = {
                 name: this.name,
                 Phoneno: this.Phoneno,
                 emailid: this.emailid,
-                gender: this.gender
+                gender: this.gender,
+                date: new Date().toLocaleString('en-IN', {
+                    timeZone: 'Asia/Kolkata',
+                    year: 'numeric',
+                    month: 'long',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                }),
+                photo: this.newPhoto || this.photo,
+                photoUrl: this.photoPreview || this.photoUrl
             };
-
-            if (this.newPhoto) {
-                updatedProfile.photo = this.newPhoto;
-                updatedProfile.photoUrl = this.photoPreview;
-            }
-
-            this.$emit('submit-update', updatedProfile);
+            // Emit the updated profile and its index to the parent
+            this.$emit('profile-updated', updatedprofile, this.profileIdx);
+            this.$swal('Profile updated successfully!');
         }
     }
 };
@@ -70,41 +96,43 @@ export default {
 
 
 <template>
-  <div class="form-wrapper">
-    <h2 class="form-title">Update Profile</h2>
-    <form @submit.prevent="handleupdate">
-      <div class="form-group">
-        <label class="form-label">Full Name</label>
-        <input v-model="name" type="text" class="form-input" placeholder="Enter your full name" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Phone Number</label>
-        <input v-model="Phoneno" type="tel" class="form-input" placeholder="Enter your phone number" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Email Address</label>
-        <input v-model="emailid" type="email" class="form-input" placeholder="Enter your email address" required>
-      </div>
-      <div class="mb-3 file-upload-group" style="display: flex; align-items: center; gap: 10px;">
-        <label for="formFile" class="form-label" style="margin-bottom: 0;">Change photo</label>
-        <input @change="handleFileChange" class="form-control custom-file-input" type="file" id="formFile" style="width: auto; flex: 1 1 auto;">
-        <img v-if="photoPreview" :src="photoPreview" alt="Preview" style="width:40px; height:40px; object-fit:cover; border-radius:50%; margin-left: 8px;" />
-      </div>
-      <div class="mb-3 gender-group">
-        <label class="form-label">Gender</label>
-        <select v-model="gender" class="form-select custom-gender-select" aria-label="Default select example">
-          <option value="Female">Female</option>
-          <option value="Male">Male</option>
-          <option value="Transgender">Transgender</option>
-          <option value="Prefer not to say">Prefer not to say</option>
-        </select>
-      </div>
-      <div class="button-group">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-secondary" @click="$router.push('/')">Cancel</button>
-      </div>
-    </form>
-  </div>
+    <div class="form-wrapper">
+        <h2 class="form-title">Update Profile</h2>
+        <form @submit.prevent="handleSubmit">
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input v-model="name" type="text" class="form-input" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input v-model="Phoneno" type="tel" class="form-input" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input v-model="emailid" type="email" class="form-input" placeholder="Enter your email address"
+                    required>
+            </div>
+            <div class="mb-3 file-upload-group" style="display: flex; align-items: center; gap: 10px;">
+                <label for="formFile" class="form-label" style="margin-bottom: 0;">Change photo</label>
+                <input @change="handleFileChange" class="form-control custom-file-input" type="file" id="formFile"
+                    style="width: auto; flex: 1 1 auto;">
+                <img v-if="photoPreview" :src="photoPreview" alt="Preview"
+                    style="width:40px; height:40px; object-fit:cover; border-radius:50%; margin-left: 8px;" />
+            </div>
+            <div class="mb-3 gender-group">
+                <label class="form-label">Gender</label>
+                <select v-model="gender" class="form-select custom-gender-select" aria-label="Default select example">
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Transgender">Transgender</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                </select>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <style scoped>
@@ -275,6 +303,7 @@ export default {
     width: 100%;
     box-sizing: border-box;
 }
+
 .custom-file-input:focus {
     outline: none;
     border-color: #3498db;
@@ -296,6 +325,7 @@ export default {
     box-sizing: border-box;
     color: black;
 }
+
 .custom-gender-select:focus {
     outline: none;
     border-color: #3498db;
@@ -307,9 +337,11 @@ export default {
         padding: 20px;
         margin: 10px;
     }
+
     .button-group {
         flex-direction: column;
     }
+
     .btn {
         width: 100%;
     }

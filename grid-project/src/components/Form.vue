@@ -24,9 +24,9 @@ export default {
             if (pic) {
                 this.pic = pic; // Store the file object
                 this.photo = pic.name; // (optional, for display)
-                this.date = pic.lastModified
-                    ? new Date(pic.lastModified).toString().split('GMT')[0].trim()
-                    : '';
+                // this.date = pic.lastModified
+                //     ? new Date(pic.lastModified).toString().split('GMT')[0].trim()
+                //     : '';
                 this.photoPreview = URL.createObjectURL(pic); // Update photoPreview
             }
         },
@@ -57,7 +57,16 @@ export default {
                 emailid: this.emailid,
                 photo: this.pic, // send the file object!
                 gender: this.gender,
-                date: this.date
+                date: new Date().toLocaleString('en-IN', {
+                    timeZone: 'Asia/Kolkata',
+                    year: 'numeric',
+                    month: 'long',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                })
             });
 
             // reset the form
@@ -104,14 +113,10 @@ export default {
             <div>
                 <div class="mb-3 file-upload-group" style="display: flex; align-items: center; gap: 10px;">
                     <label for="formFile" class="form-label" style="margin-bottom: 0;">upload a profile photo</label>
-                    <input @change="handleFileChange" class="form-control custom-file-input" type="file" id="formFile" style="width: auto; flex: 1 1 auto;">
-                    <img v-if="photoPreview" :src="photoPreview" alt="Preview" style="width:40px; height:40px; object-fit:cover; border-radius:50%; margin-left: 8px;" />
-                </div>
-
-                <div v-if="imagePreview" style="margin-top: 10px;">
-                    <p>Preview:</p>
-                    <img :src="imagePreview" alt="Image Preview"
-                        style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px;" />
+                    <input @change="handleFileChange" class="form-control custom-file-input" type="file" id="formFile"
+                        style="width: auto; flex: 1 1 auto;">
+                    <img v-if="photoPreview" :src="photoPreview" alt="Preview"
+                        style="width:40px; height:40px; object-fit:cover; border-radius:50%; margin-left: 8px;" />
                 </div>
 
             </div>
