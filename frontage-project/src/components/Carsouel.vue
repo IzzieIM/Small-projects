@@ -82,7 +82,7 @@ export default {
             <img src="../assets/paypal.d398de5.svg" alt />
             <img src="../assets/pg.22fca85.svg" alt />
             <div class="play-button">
-              <button type="button" class="btn btn-secondary play-pause" @click="toggleVideo()">Secondary</button>
+              <button type="button" class="btn btn-secondary play-pause" @click="toggleVideo()">play/pause</button>
             </div>
           </div>
         </div>
@@ -900,8 +900,8 @@ li {
 
 .fiver-pictures-grid img {
   display: block;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   border-radius: 10px;
 }
