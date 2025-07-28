@@ -1,15 +1,19 @@
 <script>
-import Carsouel from './components/Carsouel.vue';
+// import Carsouel from './components/Carsouel.vue';
+import Navbar from './components/Navbar.vue';
+// import { createRouter, createWebHistory } from 'vue-router';
 export default {
   name: 'App',
   components: {
-    Carsouel,
+    Navbar,
+    // Carsouel,
   },
 };
 </script>
 
 <template>
-  <Carsouel />
+  <Navbar/>
+  <router-view />
 </template>
 
 <style>

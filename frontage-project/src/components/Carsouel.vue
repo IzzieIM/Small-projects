@@ -1,5 +1,11 @@
 <script>
+import './Carsouel.css'; // <-- Import your CSS file here
 export default {
+  name: 'Carsouel',
+  mounted() {
+    console.log("Carsouel component mounted!");
+  },
+  
   methods: {
     scrollPopularServices(direction) {
       const container = this.$refs.popularServicesCards;
@@ -26,21 +32,6 @@ export default {
 
 <template>
   <div class="main-container">
-    <div class="top-navbar-container">
-      <div class="logo-left">
-        <img src alt="this is a logo" />
-      </div>
-      <div class="navbar-right">
-        <ul>
-          <li>Fiverr Pro</li>
-          <li>Explore</li>
-          <li>EN</li>
-          <li>Become a Bestseller</li>
-          <li>Sign Up</li>
-          <li style="border: 1px solid black; padding: 8px ; border-radius: 5px">Login</li>
-        </ul>
-      </div>
-    </div>
     <div class="carsouel-container">
       <div class="carsouel">
         <div class="video">
@@ -189,7 +180,7 @@ export default {
           </div>
         </div>
         <button class="scroll-arrow right" @click="scrollPopularServices('right')">&#8594;
-</button>
+        </button>
       </div>
     </div>
 
@@ -214,48 +205,48 @@ export default {
       <div class="trusted-services-wrapper-heading">
         <h2>Vontélle’s trusted services</h2>
       </div>
-        <div class="trusted-services-wrapper-cards" ref="trustedServicesCards">
-          <div class="card">
-            <div class="card-img">
-              <img
-                src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666557/3D-Industrial-Design_2x.png"
-                alt />
-            </div>
-            <div class="card-texts">3D Industrial Designs</div>
+      <div class="trusted-services-wrapper-cards" ref="trustedServicesCards">
+        <div class="card">
+          <div class="card-img">
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666557/3D-Industrial-Design_2x.png"
+              alt />
           </div>
-          <div class="card">
-            <div class="card-img">
-              <img
-                src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666565/E-commerce-Website-Development_2x.png"
-                alt />
-            </div>
-            <div class="card-texts">Ecommerce and Website Development</div>
-          </div>
-          <div class="card">
-            <div class="card-img">
-              <img
-                src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666560/Email-Marketing_2x.png"
-                alt />
-            </div>
-            <div class="card-texts">Email Marketing</div>
-          </div>
-          <div class="card">
-            <div class="card-img">
-              <img
-                src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666567/Press-Releases_2x.png"
-                alt />
-            </div>
-            <div class="card-texts">Press Releases</div>
-          </div>
-          <div class="card">
-            <div class="card-img">
-              <img
-                src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666561/Logo-Design_2x.png"
-                alt />
-            </div>
-            <div class="card-texts">Logo Designs</div>
-          </div>
+          <div class="card-texts">3D Industrial Designs</div>
         </div>
+        <div class="card">
+          <div class="card-img">
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666565/E-commerce-Website-Development_2x.png"
+              alt />
+          </div>
+          <div class="card-texts">Ecommerce and Website Development</div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666560/Email-Marketing_2x.png"
+              alt />
+          </div>
+          <div class="card-texts">Email Marketing</div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666567/Press-Releases_2x.png"
+              alt />
+          </div>
+          <div class="card-texts">Press Releases</div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_80,dpr_1.0/v1/attachments/generic_asset/asset/818fbc450c6b7f14664e7d15584f008b-1722417666561/Logo-Design_2x.png"
+              alt />
+          </div>
+          <div class="card-texts">Logo Designs</div>
+        </div>
+      </div>
     </div>
 
     <div class="fiver-logo-maker-wrapper">
@@ -412,619 +403,4 @@ export default {
   </div>
 </template>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap');
-
-.main-container {
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.carsouel-container {
-  color: black;
-  width: 100%;
-  position: relative;
-}
-
-.top-navbar-container {
-  width: 100%;
-  height: 70px;
-  background-color: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 40px;
-  padding-right: 30px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.navbar-right ul {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-li {
-  list-style: none;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.video {
-  width: 100vw;
-  height: 105vh;
-  overflow: visible;
-  position: relative;
-}
-
-.video video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.video-text {
-  position: absolute;
-  top: 200px;
-  left: 50px;
-  text-align: center;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.video-text-heading {
-  margin-bottom: 20px;
-}
-
-.search-wrapper {
-  width: 80vw;
-  margin: auto;
-  /* center horizontally */
-}
-
-.search-container {
-  position: relative;
-  width: 100%;
-}
-
-.search-input {
-  width: 100%;
-  padding-right: 100px;
-  /* space for button */
-}
-
-.search-button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.video-text-heading h1 {
-  font-size: 60px;
-  font-weight: 200;
-  text-align: left;
-}
-
-.video-text-skills {
-  display: flex;
-  gap: 10px;
-  margin-top: 30px;
-  padding-right: 80px;
-}
-
-.video-text-skills button {
-  padding: 10px 20px;
-  width: auto;
-  height: 48px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: 1px solid white;
-  background-color: rgba(255, 255, 255, 0.123);
-  color: white;
-}
-
-.carsouel-footer {
-  position: absolute;
-  bottom: 16px;
-  left: 50px;
-  right: 50px;
-  margin-top: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: calc(100vw - 100px);
-  /* 50px left + 50px right */
-  box-sizing: border-box;
-}
-
-.text-left {
-  color: white;
-  font-size: 20px;
-  z-index: 50;
-}
-
-.play-button {
-  margin-left: auto;
-  /* pushes play-button to the far right */
-}
-
-.brands-right {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.features-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 30px;
-  gap: 25px;
-  box-sizing: border-box;
-}
-
-.features-card {
-  position: relative;
-  /* necessary for pseudo-element positioning */
-  height: 120px;
-  width: 120px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.322);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.features-card::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  background: rgba(75, 206, 82, 0.5);
-  /* light blue */
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  filter: blur(25px);
-  transition: transform 0.5s ease;
-  z-index: 0;
-}
-
-.features-card:hover::before {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.features-card-text {
-  font-size: 12px;
-  padding: 5px;
-  font-weight: 600;
-  text-align: center;
-  z-index: 1;
-  position: relative;
-  /* ensures it's above the blur */
-}
-
-
-.popular-services {
-  padding: 30px;
-}
-
-.popular-services-scroll-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.popular-services-cards {
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 25px;
-  width: 100%;
-  padding: 10px 0;
-  scrollbar-width: none;
-  /* Firefox */
-  -ms-overflow-style: none;
-  /* IE and Edge */
-}
-
-.popular-services-text {
-  color: white;
-  text-align: center;
-  margin-top: 30px;
-  font-weight: 600;
-
-
-}
-
-.popular-services-cards::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, Opera */
-}
-
-.popular-services-card {
-  height: 250px;
-  width: 200px;
-  background-color: rgb(14, 29, 14);
-  border-radius: 10px;
-  margin-top: 35px;
-  flex-shrink: 0;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.scroll-arrow {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 2;
-  position: relative;
-}
-
-.scroll-arrow.left {
-  margin-right: 10px;
-}
-
-.scroll-arrow.right {
-  margin-left: 10px;
-}
-
-.popular-services-card-img {
-  position: absolute;
-  bottom: 8px;
-}
-
-.popular-services-card-img img {
-  width: 150;
-}
-
-.carsouel2-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-.carsouel2 {
-  height: 80vh;
-  width: 95vw;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.322);
- background: linear-gradient(
-  to bottom left,
-  rgb(197, 97, 114) 60%,
-  rgb(95, 20, 36) 90%
-);
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  border-radius: 20px;
-}
-
-.carsouel2-video-right {
-  position: absolute;
-  right: 50px;
-}
-
-.carsouel2-video-right video {
-  height: 65vh;
-  width: 45vw;
-  border-radius: 30px;
-}
-
-.carsouel2-text-left {
-  width: 40vw;
-  position: absolute;
-  left: 50px;
-  color: white;
-}
-
-.carsouel2-text-left button {
-  margin-top: 30px;
-  height: 50px;
-}
-
-.trusted-services-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-
-.trusted-services-wrapper-cards {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-  margin: 30px 0;
-  width: 100%;
-  padding: 10px 0;
-  justify-content: center;
-}
-
-
-.trusted-services-wrapper-cards .card {
-  height: 200px;
-  width: 220px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.322);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.card-texts {
-  text-align: center;
-}
-
-.card-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.card-img img {
-  display: block;
-  margin: 0 auto;
-  max-width: 80px;
-  height: auto;
-}
-
-.fiver-logo-maker-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-.fiver-logo-maker {
-  width: 95vw;
-  height: 80vh;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.322);
-  background-color: rgb(255, 249, 243);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  border-radius: 20px;
-  padding: 50px;
-  padding-right: 100px;
-  position: relative;
-  gap: 180px;
-
-}
-
-.fiver-logo-maker-left {
-  width: 40vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 40px;
-}
-
-.fiver-logo-maker-left .logo {
-  position: absolute;
-  top: 50px;
-  left: 50px;
-}
-
-.fiver-logo-maker-left .text {
-  position: absolute;
-  left: 50px;
-  margin-bottom: 30px;
-  display: block;
-}
-
-.fiver-logo-maker-left .text h1 {
-  font-size: 50px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.fiver-logo-maker-left .text h1 span {
-  color: rgb(240, 164, 23);
-  font-family: "Domine", serif;
-  font-weight: 400;
-}
-
-.fiver-logo-maker-left .text p {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  font-weight: 500;
-  color: rgb(78, 76, 76);
-  font-size: 20px;
-}
-
-/* made with fiver */
-.fiver-pictures-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-}
-
-.fiver-pictures-heading {
-  position: absolute;
-  top: 50px;
-  left: 50px;
-}
-
-.fiver-pictures-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* 4 equal columns */
-  grid-auto-rows: auto;
-  /* row height adapts to image */
-  row-gap: 15px;
-  /* 15px vertical gap */
-  column-gap: 15px;
-  /* 15px horizontal gap */
-  justify-content: center;
-  padding: 50px;
-  align-items: start;
-  /* align images to the top of each cell */
-}
-
-.fiver-pictures-grid img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  border-radius: 10px;
-}
-
-.footer-carsouel-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-.footer-carsouel {
-  width: 95vw;
-  height: 50vh;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.322);
-  background-color: rgb(41, 6, 8);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  border-radius: 20px;
-  color: white;
-}
-
-.footer-carsouel .texts {
-  font-size: 64px;
-  font-weight: 500;
-  text-align: center;
-  padding-bottom: 50px;
-}
-
-.footer-carsouel .texts span {
-  color: rgb(255, 118, 64);
-  font-family: "Domine", serif;
-  font-size: 64px;
-  font-weight: 400;
-}
-
-.footer-carsouel button {
-  height: 50px;
-  width: 150px;
-}
-
-.site-footer {
-  background: #ffffff;
-  color: #292828;
-  padding: 40px 0 0 0;
-  font-size: 15px;
-  margin-top: 60px;
-  border-top: #363636 1px solid;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 40px;
-  gap: 40px;
-}
-
-.footer-section {
-  min-width: 200px;
-  flex: 1 1 250px;
-  margin-bottom: 30px;
-}
-
-.footer-section h4 {
-  font-size: 17px;
-  margin-bottom: 15px;
-  font-weight: 600;
-  color: #000000;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: color 0.2s;
-  color: #242222c9;
-  font-size: 14px;
-}
-
-.footer-section ul li:hover {
-  color: rgb(255, 118, 64);
-}
-
-.footer-bottom {
-  border-top: 1px solid #444;
-  text-align: center;
-  padding: 18px 0;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #353434b7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-socials {
-  margin-top: 8px;
-  display: flex;
-  gap: 18px;
-  justify-content: center;
-}
-
-.footer-social-link {
-  color: #353434b7;
-  transition: color 0.2s;
-  display: inline-flex;
-  align-items: center;
-}
-
-.footer-social-link:hover {
-  color: #f0a417;
-}
-</style>
+<style scoped></style>
