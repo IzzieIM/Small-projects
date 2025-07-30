@@ -1,19 +1,23 @@
 <script>
-// import Carsouel from './components/Carsouel.vue';
 import Navbar from './components/Navbar.vue';
-// import { createRouter, createWebHistory } from 'vue-router';
+import Footer from './components/Footer.vue';
 export default {
   name: 'App',
   components: {
     Navbar,
-    // Carsouel,
+    Footer,
   },
 };
 </script>
 
 <template>
-  <Navbar/>
-  <router-view />
+  <div>
+    <Navbar/>
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
+    <Footer/>
+  </div>
 </template>
 
 <style>
