@@ -22,6 +22,11 @@
   z-index: 100;
 }
 
+.navbar-right a {
+  color: black;
+  text-decoration: none;
+}
+
 .navbar-right ul {
   display: flex;
   align-items: center;
@@ -33,4 +38,19 @@ li {
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+.router-link-exact-active {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.profile-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
 }

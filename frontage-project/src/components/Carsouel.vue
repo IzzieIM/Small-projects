@@ -201,7 +201,7 @@ export default {
       </div>
     </div>
 
-    <div class="trusted-services-wrapper">
+    <div class="trusted-services-wrapper" id="explore">
       <div class="trusted-services-wrapper-heading">
         <h2>Vontélle’s trusted services</h2>
       </div>
@@ -250,7 +250,7 @@ export default {
     </div>
 
     <div class="fiver-logo-maker-wrapper">
-      <div class="fiver-logo-maker">
+      <div class="fiver-logo-maker" >
         <div class="fiver-logo-maker-left">
           <div class="logo">
             this is a logo
@@ -305,7 +305,7 @@ export default {
     </div>
 
     <div class="footer-carsouel-wrapper">
-      <div class="footer-carsouel">
+      <div class="footer-carsouel" id="fiverrpro">
         <div class="texts">
           Freelance services at your
           <span>fingertips</span>

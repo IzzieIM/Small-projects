@@ -11,12 +11,12 @@ export default {
 </script>
 
 <template>
-  <div>
-    <Navbar/>
+  <div class="app-container">
+    <Navbar />
     <transition name="fade" mode="out-in">
-      <router-view />
+      <router-view class="main-content" />
     </transition>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -31,5 +31,23 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* .app.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+} */
+
+ .app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full screen height */
+  overflow-x: hidden;
+}
+
+.main-content {
+  flex: 1; /* Take up remaining space */
 }
 </style>

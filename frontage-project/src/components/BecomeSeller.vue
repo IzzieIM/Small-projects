@@ -90,7 +90,7 @@
                         <div class="qanda-question">
                             {{ item.question }}
                         </div>
-                        <div class="qanda-answer" v-show="expandedIdx === idx">
+                        <div v-if="expandedIdx === idx" class="qanda-answer">
                             {{ item.answer }}
                         </div>
                     </div>
